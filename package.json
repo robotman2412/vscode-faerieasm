@@ -1,0 +1,35 @@
+{
+	"name": "faerieasm",
+	"displayName": "Faerie Assembly",
+	"publisher": "RobotMan2412",
+	"icon": "./icons/logo_128.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/robotman2412/vscode-faerieasm.git"
+	},
+	"description": "Faerie 8-bit CPU Assembly language support",
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.57.0"
+	},
+	"categories": [
+		"Programming Languages", "Snippets"
+	],
+	"contributes": {
+		"languages": [{
+			"id": "faerieasm",
+			"aliases": ["Faerie Assembly"],
+			"extensions": [".asm", ".f8"],
+			"configuration": "./faerieasm-language-configuration.json",
+			"icon": {
+				"dark": "./icons/logo_32.png",
+				"light": "./icons/logo_32.png"
+			}
+		}],
+		"grammars": [{
+			"language": "faerieasm",
+			"scopeName": "source.faerieasm",
+			"path": "./syntaxes/faerieasm.tmLanguage.json"
+		}]
+	}
+}

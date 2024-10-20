@@ -1,0 +1,92 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Faerie Assembly",
+	"patterns": [
+		{
+			"include": "#double_strings"
+		},
+		{
+			"include": "#single_strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#directives"
+		},
+		{
+			"include": "#instructions"
+		},
+		{
+			"include": "#literals"
+		}
+	],
+	"repository": {
+		"instructions": {
+			"patterns": [{
+				"name": "keyword.other.faerieasm",
+				"match": "\\b(shl|xor|add|or|shr|ld|sub|and|shlc|xorc|addc|orc|shrc|ldc|subc|andc|beq|bcs|bgt|blt|bne|bcc|ble|bge|j)\\b"
+			}, {
+				"name": "keyword.other.faerieasm",
+				"match": "\\b(SHL|XOR|ADD|OR|SHR|LD|SUB|AND|SHLC|XORC|ADDC|ORC|SHRC|LDC|SUBC|ANDC|BEQ|BCS|BGT|BLT|BNE|BCC|BLE|BGE|J)\\b"
+			}, {
+				"name": "keyword.other.faerieasm",
+				"match": "\\b(li|cmp|st)\\b"
+			}, {
+				"name": "keyword.other.faerieasm",
+				"match": "\\b(LI|CMP|ST)\\b"
+			}]
+		},
+		"directives": {
+			"patterns": [{
+				"name": "keyword.control.faerieasm",
+				"match": "^\\s*\\.(byte|zero|equ|org)\\b"
+			}, {
+				"name": "support.function.faerieasm",
+				"match": "^\\s*\\.?\\w+:"
+			}]
+		},
+		"double_strings": {
+			"name": "string.quoted.double.faerieasm",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.faerieasm",
+					"match": "\\\\(['\"rnftb0]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4,5})"
+				}
+			]
+		},
+		"single_strings": {
+			"name": "string.quoted.single.faerieasm",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.faerieasm",
+					"match": "\\\\(['\"rnftb0]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4,5})"
+				}
+			]
+		},
+		"literals": {
+			"patterns": [{
+				"name": "constant.numeric.faerieasm",
+				"match": "\\b0[oO][0-7]+\\b"
+			}, {
+				"name": "constant.numeric.faerieasm",
+				"match": "\\b0[0-7]*\\b"
+			}, {
+				"name": "constant.numeric.faerieasm",
+				"match": "\\b[1-9][0-9]*\\b"
+			}, {
+				"name": "constant.numeric.faerieasm",
+				"match": "\\b0[xX][0-9a-fA-F]+\\b"
+			}]
+		},
+		"comments": {
+			"name": "comment.line.double-slash.faerieasm",
+			"match": "(//|;).*$"
+		}
+	},
+	"scopeName": "source.faerieasm"
+}
