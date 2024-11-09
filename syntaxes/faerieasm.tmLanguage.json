@@ -19,6 +19,9 @@
 		},
 		{
 			"include": "#literals"
+		},
+		{
+			"include": "#preproc"
 		}
 	],
 	"repository": {
@@ -31,19 +34,25 @@
 				"match": "\\b(SHL|XOR|ADD|OR|SHR|LD|SUB|AND|SHLC|XORC|ADDC|ORC|SHRC|LDC|SUBC|ANDC|BEQ|BCS|BGT|BLT|BNE|BCC|BLE|BGE|J)\\b"
 			}, {
 				"name": "keyword.other.faerieasm",
-				"match": "\\b(li|cmp|st)\\b"
+				"match": "\\b(li|cmp|st|ret)\\b"
 			}, {
 				"name": "keyword.other.faerieasm",
-				"match": "\\b(LI|CMP|ST)\\b"
+				"match": "\\b(LI|CMP|ST|RET)\\b"
 			}]
 		},
 		"directives": {
 			"patterns": [{
 				"name": "keyword.control.faerieasm",
-				"match": "^\\s*\\.(byte|zero|equ|org)\\b"
+				"match": "^\\s*\\.(byte|zero|equ|org|asci[iz])\\b"
+			}, {
+				"name": "keyword.control.faerieasm",
+				"match": "%(hi|lo)\\b"
+			}, {
+				"name": "keyword.control.faerieasm",
+				"match": "\\b(zp|zpage|zeropage)\\b"
 			}, {
 				"name": "support.function.faerieasm",
-				"match": "^\\s*\\.?\\w+:"
+				"match": "^\\s*\\.?[\\w.]+:"
 			}]
 		},
 		"double_strings": {
@@ -84,8 +93,18 @@
 			}]
 		},
 		"comments": {
-			"name": "comment.line.double-slash.faerieasm",
-			"match": "(//|;).*$"
+			"patterns": [{
+				"name": "comment.line.double-slash.faerieasm",
+				"match": "(//|;).*$"
+			}, {
+				"name": "comment.block.faerieasm",
+				"begin": "/\\*",
+				"end": "\\*/"
+			}]
+		},
+		"preproc": {
+			"name": "keyword.control.faerieasm",
+			"match": "^\\s*#\\s*(include|define)\\b"
 		}
 	},
 	"scopeName": "source.faerieasm"

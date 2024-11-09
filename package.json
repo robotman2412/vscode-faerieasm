@@ -10,12 +10,25 @@
 	"description": "Faerie 8-bit CPU Assembly language support",
 	"version": "1.0.0",
 	"engines": {
-		"vscode": "^1.57.0"
+		"vscode": "^1.75.0"
 	},
 	"categories": [
 		"Programming Languages", "Snippets"
 	],
+	"main": "./out/extension",
 	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Faerie assembly configuration",
+			"properties": {
+				"faerieasm.assembler_binary": {
+					"scope":       "application",
+					"type":        "string",
+					"default":     "faerie-as",
+					"description": "Executable name / path for the Faerie assembler."
+				}
+			}
+		},
 		"languages": [{
 			"id": "faerieasm",
 			"aliases": ["Faerie Assembly"],
@@ -31,5 +44,23 @@
 			"scopeName": "source.faerieasm",
 			"path": "./syntaxes/faerieasm.tmLanguage.json"
 		}]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint",
+		"watch": "tsc -watch -p ./"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^9.0.1"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.13.0",
+		"@stylistic/eslint-plugin": "^2.9.0",
+		"@types/node": "^20",
+		"@types/vscode": "^1.73.0",
+		"eslint": "^9.13.0",
+		"typescript": "^5.6.2",
+		"typescript-eslint": "^8.11.0"
 	}
 }
