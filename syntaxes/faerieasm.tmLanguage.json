@@ -43,7 +43,7 @@
 		"directives": {
 			"patterns": [{
 				"name": "keyword.control.faerieasm",
-				"match": "^\\s*\\.(byte|zero|equ|org|asci[iz])\\b"
+				"match": "\\.(byte|zero|equ|org|asci[iz])\\b"
 			}, {
 				"name": "keyword.control.faerieasm",
 				"match": "%(hi|lo)\\b"
@@ -52,7 +52,7 @@
 				"match": "\\b(zp|zpage|zeropage)\\b"
 			}, {
 				"name": "support.function.faerieasm",
-				"match": "^\\s*\\.?[\\w.]+:"
+				"match": "\\.?[\\w.]+:"
 			}]
 		},
 		"double_strings": {
@@ -95,7 +95,7 @@
 		"comments": {
 			"patterns": [{
 				"name": "comment.line.double-slash.faerieasm",
-				"match": "(//|;).*$"
+				"match": "//.*$"
 			}, {
 				"name": "comment.block.faerieasm",
 				"begin": "/\\*",
@@ -103,8 +103,13 @@
 			}]
 		},
 		"preproc": {
-			"name": "keyword.control.faerieasm",
-			"match": "^\\s*#\\s*(include|define)\\b"
+			"patterns": [{
+				"name": "keyword.control.faerieasm",
+				"match": "^\\s*#\\s*(include|define)\\b"
+			}, {
+				"name": "meta.preprocessor",
+				"match": "(?<=#define\\s+)\\w+\\b"
+			}]
 		}
 	},
 	"scopeName": "source.faerieasm"
